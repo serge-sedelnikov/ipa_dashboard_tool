@@ -30,3 +30,22 @@ Widgets can be of a different type:
 ![main blocks](https://bitbucket.org/storaensoipa/ipa.dashboard.tool/downloads/IpaDashboarding.png)
 
 Jobs and Socket.IO server are running on Express Node.JS application. The same application is hosting React-based UI layer which is subscribed for Socket.IO Events
+
+# Used technology stack
+
+- Node JS as main running environment
+- Express for hosting React UI layer and management API
+- React JS for developing the UI layer
+    - Bootstrap 4.0 for layout and main css style;
+    - React grid layout (https://github.com/STRML/react-grid-layout) for building up layout of dashboard;
+    - AG Data Grid for data table display;
+    - React charts (http://recharts.org/) for chart widgets;
+    - Node Schedule to run jobs on schedule (https://github.com/node-schedule/node-schedule)
+    - MQTT for Node JS to subscribe for MQTT broker messages (https://www.npmjs.com/package/mqtt);
+
+# Connection Points and Hierarchy
+
+There are two types of jobs:
+
+- `ScheduleJob` - runs on schedule. When creating job, derived from `ScheduleJob` class, override method `getSchedule()` and return desired Cron format string: (`* * * * * *`) describing the needed schedule. Once per second is the minimal.
+- `MqttEventJob` - runs on MQTT event. When creating job derived from the `MqttEventJob`, override the method `getTopics()` that rerurns the array of topics that the job need to subscribe to. Acceptrs all MQTT wildcard formats too: `['topic1/#', 'topic2/event1', ...]`
