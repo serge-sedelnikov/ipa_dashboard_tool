@@ -1,5 +1,6 @@
-const io = require('socket.io-client')('http://');
+const io = require('socket.io-client')(`http://localhost:${global.port || 5000}`)
 const uidGenerator = require('node-unique-id-generator');
+
 /**
  * Base job class. Connects to the socket io and ready to broadcast event on demand.
  */
