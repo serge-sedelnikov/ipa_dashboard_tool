@@ -19,13 +19,17 @@ class JobRunner {
         // finds all jobs in the \jobs folder, imports them and call run method on them
         fs.readdirSync(jobsFolder).forEach(file => {
             const jobFile = `../${jobsFolder}/${file}`;
+            // resolve job type from the file
             let job = require(jobFile);
+            // create new job of resolved type. notice as we use async method to initialize the job (see jobs/sample-job.js) we need to wait before we can create an instance of a job.
             var initPromise = new job();
             jobInitPromises.push(initPromise);
         });
 
+        // wait for all imported jobs to finish their initialization.
         Promise.all(jobInitPromises)
             .then(initializedJobs => {
+                // save them
                 this.jobs = initializedJobs;
             })
             .then(() => {
@@ -33,6 +37,8 @@ class JobRunner {
                 this.jobs.forEach(j => {
                     j.run();
                 });
+                // exit promise
+                return Promise.resolve(0);
             });
     }
 }
