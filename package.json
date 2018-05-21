@@ -1,6 +1,6 @@
 {
   "name": "ipa.dashboard.tool",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "copy-client": "cd client/build && cpy **/*.* ../../public --parents",

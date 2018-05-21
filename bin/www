@@ -96,3 +96,6 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+// after everything is set up, start worker and jobs
+require('../start');
