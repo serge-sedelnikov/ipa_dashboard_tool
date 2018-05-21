@@ -50,3 +50,5 @@ There are two types of jobs:
 
 - `ScheduleJob` - runs on schedule. When creating job, derived from `ScheduleJob` class, override method `getSchedule()` and return desired Cron format string: (`* * * * * *`) describing the needed schedule. Once per second is the minimal.
 - `MqttEventJob` - runs on MQTT event. When creating job derived from the `MqttEventJob`, override the method `getTopics()` that rerurns the array of topics that the job need to subscribe to. Acceptrs all MQTT wildcard formats too: `['topic1/#', 'topic2/event1', ...]`
+
+> If mentioned methods are not overwritten, the exception is thrown on the application start.
