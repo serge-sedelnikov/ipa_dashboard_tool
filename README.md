@@ -92,3 +92,13 @@ npm run start:production
 ```
 
 It will build up react client, copy the build result into express `public` folder and starts the `express` backend at the default `PORT` or `5000`.
+
+# Backend classes
+
+`/src`
+
+- `job-runner.js` - this class resolves all jobs available in `\jobs` folder and starts them. 
+
+`/src/base`
+
+- `job.js` - base job class. Subscribes for socket.io and ready to send the signal on demand.
