@@ -1,9 +1,9 @@
-import io from 'socket.io-client';
-import uidGenerator from 'node-unique-id-generator';
+const io = require('socket.io-client');
+const uidGenerator = require('node-unique-id-generator');
 /**
  * Base job class. Connects to the socket io and ready to broadcast event on demand.
  */
-export class Job{
+class Job{
     
     /** Creates class instance */
     constructor(){
@@ -46,3 +46,5 @@ export class Job{
         throw 'Not implemented. The job must implement "run()" method.'
     }
 }
+
+module.exports.Job = Job;

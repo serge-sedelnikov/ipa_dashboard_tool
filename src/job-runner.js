@@ -16,7 +16,14 @@ class JobRunner {
         const jobsFolder = 'jobs';
         // finds all jobs in the \jobs folder, imports them and call run method on them
         fs.readdirSync(jobsFolder).forEach(file => {
-            console.log(file);
+            const jobFile = `../${jobsFolder}/${file}`;
+            let job = require(jobFile);
+            this.jobs.push(job);
+        });
+
+        // when read and setup, call run for all jobs
+        this.jobs.forEach(job => {
+            job.run();
         });
     }
 }

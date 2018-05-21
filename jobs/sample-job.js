@@ -1,4 +1,4 @@
-import { Job } from '../src/base/job';
+const { Job } = require('../src/base/job');
 
 /**
  * Sample job.
@@ -18,4 +18,4 @@ class SampleJob extends Job {
     }
 }
 
-export default SampleJob;
+module.exports = new SampleJob();
