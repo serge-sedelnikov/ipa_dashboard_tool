@@ -7,19 +7,19 @@ class Job{
     
     /** Creates class instance */
     constructor(){
-        return this.initializeAsync();
+        return this.private__InitializeAsync();
     }
 
     /** Initializes the class, returns Promise */
-    initializeAsync(){
+    private__InitializeAsync(){
         // generate job unique ID with 'job' prefix
         this.id = uidGenerator.generateUniqueId('job-');
-        let initPromise = this.onInitializeAsync();
+        let initPromise = this.initializeAsync();
         return initPromise.then(() => this);
     }
 
     /** Executes when module need to be initialized. If returns promise, the thread waits for the initialization */
-    onInitializeAsync(){
+    initializeAsync(){
         return Promise.resolve(this);
     }
 
