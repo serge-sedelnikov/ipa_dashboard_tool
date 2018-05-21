@@ -14,17 +14,26 @@ class JobRunner {
     /** Runs the job runner. */
     run() {
         const jobsFolder = 'jobs';
+        let jobInitPromises = [];
+
         // finds all jobs in the \jobs folder, imports them and call run method on them
         fs.readdirSync(jobsFolder).forEach(file => {
             const jobFile = `../${jobsFolder}/${file}`;
             let job = require(jobFile);
-            this.jobs.push(job);
+            var initPromise = new job();
+            jobInitPromises.push(initPromise);
         });
 
-        // when read and setup, call run for all jobs
-        this.jobs.forEach(job => {
-            job.run();
-        });
+        Promise.all(jobInitPromises)
+            .then(initializedJobs => {
+                this.jobs = initializedJobs;
+            })
+            .then(() => {
+                // when read and setup, call run for all jobs
+                this.jobs.forEach(j => {
+                    j.run();
+                });
+            });
     }
 }
 

@@ -1,4 +1,4 @@
-const io = require('socket.io-client');
+const io = require('socket.io-client')('http://localhost:5000/');
 const uidGenerator = require('node-unique-id-generator');
 /**
  * Base job class. Connects to the socket io and ready to broadcast event on demand.
@@ -12,17 +12,15 @@ class Job{
 
     /** Initializes the class, returns Promise */
     initializeAsync(){
-        // io client to notify on data ready
-        this.ioClient = io('/');
         // generate job unique ID with 'job' prefix
         this.id = uidGenerator.generateUniqueId('job-');
-
-        return this.onInitializeAsync();
+        let initPromise = this.onInitializeAsync();
+        return initPromise.then(() => this);
     }
 
     /** Executes when module need to be initialized. If returns promise, the thread waits for the initialization */
     onInitializeAsync(){
-        return Promise.resolve(0);
+        return Promise.resolve(this);
     }
 
     /**
@@ -38,7 +36,7 @@ class Job{
             throw 'payload is required but not provided.'
         }
         // emit the event
-        this.ioClient.emit(dataId, payload);
+        io.emit(dataId, payload);
     }
 
     /** Runs the job. */

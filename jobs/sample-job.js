@@ -18,4 +18,4 @@ class SampleJob extends Job {
     }
 }
 
-module.exports = new SampleJob();
+module.exports = SampleJob;
