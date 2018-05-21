@@ -26,3 +26,6 @@ Widgets can be of a different type:
 - Bar Chart
 - Pie Chart
 - etc.. (to be extended based on customer needs)
+
+![main blocks](https://bitbucket.org/storaensoipa/ipa.dashboard.tool/downloads/IpaDashboarding.png)
+
