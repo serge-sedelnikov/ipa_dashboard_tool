@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "copy-client": "cd client/build && cpy **/*.* ../../public --parents",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "client": "cd client && npm start",
     "server": "node ./bin/www",
-    "copy-client": "cd client/build && cpy **/*.* ../../public --parents",
-    "build": "cd client && npm run build && npm run copyClientBuild",
+    "build": "cd client && npm run build && cd .. && npm run copy-client",
     "start:production": "npm run build && npm run server"
   },
   "dependencies": {

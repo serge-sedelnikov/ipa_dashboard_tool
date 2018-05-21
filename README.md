@@ -67,4 +67,24 @@ npm install
 npm start
 ```
 
-Then navigate to `http://localhost:5000`. If you have environment variable `PORT` defined, navigate to this port on `localhost` host.
+`npm start` runs both backend and UI under different ports. Test UI application in `http://localhost:3000`. Then navigate to `http://localhost:5000`. If you have environment variable `PORT` defined, navigate to this port on `localhost` host.
+
+# Build up for production
+
+To build for production, execute 
+
+```
+npm run build
+```
+
+It will build up react application from `client` folder and copy the build result to `public` folder of the backend. Then you can publish the content of the application excluding `client` folder to the server.
+
+# Start in production mode
+
+To start application for production mode run
+
+```
+npm run start:production
+```
+
+It will build up react client, copy the build result into express `public` folder and starts the `express` backend at the default `PORT` or `5000`.
