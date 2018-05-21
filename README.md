@@ -29,3 +29,4 @@ Widgets can be of a different type:
 
 ![main blocks](https://bitbucket.org/storaensoipa/ipa.dashboard.tool/downloads/IpaDashboarding.png)
 
+Jobs and Socket.IO server are running on Express Node.JS application. The same application is hosting React-based UI layer which is subscribed for Socket.IO Events
