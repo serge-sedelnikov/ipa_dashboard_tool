@@ -17,6 +17,11 @@ export class Job{
         // generate job unique ID with 'job' prefix
         this.id = uidGenerator.generateUniqueId('job-');
 
+        return this.onInitializeAsync();
+    }
+
+    /** Executes when module need to be initialized. If returns promise, the thread waits for the initialization */
+    onInitializeAsync(){
         return Promise.resolve(0);
     }
 
