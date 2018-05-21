@@ -57,3 +57,14 @@ There are two types of jobs:
 > If mentioned methods are not overwritten, the exception is thrown on the application start.
 
 ![User interface hierarchy](https://bitbucket.org/storaensoipa/ipa.dashboard.tool/downloads/IpaDashboarding1.png)
+
+# Running locally
+
+To start application locally execute
+
+```
+npm install
+npm start
+```
+
+Then navigate to `http://localhost:5000`. If you have environment variable `PORT` defined, navigate to this port on `localhost` host.
