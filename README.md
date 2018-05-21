@@ -25,6 +25,7 @@ Widgets can be of a different type:
 - Line chart
 - Bar Chart
 - Pie Chart
+- *Generic HTML Widget* - the widget that accepts data ID and calls `render()` method, developer needs to define render method.
 - etc.. (to be extended based on customer needs)
 
 ![main blocks](https://bitbucket.org/storaensoipa/ipa.dashboard.tool/downloads/IpaDashboarding.png)
