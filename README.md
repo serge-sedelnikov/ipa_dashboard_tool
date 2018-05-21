@@ -102,3 +102,18 @@ It will build up react client, copy the build result into express `public` folde
 `/src/base`
 
 - `job.js` - base job class. Subscribes for socket.io and ready to send the signal on demand.
+
+# Sample
+
+`jobs/sample-job.js` is created to demonstrate the generic job flow.
+
+Developer must overwrite `run()` method of the generic job when it is extended from `Job` class. This method can do anything to fetch the data and when data is ready, it needs to call `this.sendEvent(dataId, payload)` method with necessary data ID and fetched data. This will be sent to widgets.
+
+It is also possible to override method `initializeAsync()` that must return `Promise`. In this method developer can define initialization activities, the `run()` method will never be run before the `initializeAsync()` is finished.  
+
+## Job life cycle:
+
+The following methods are executed one after another but never at the same time.
+
+1. `initializeAsync()` - `Promise` to execute initialization steps.
+2. `run()` - execute the job

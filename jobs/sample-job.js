@@ -34,7 +34,7 @@ class SampleJob extends Job {
         })
         .then((data) => {
             // send the data under 'current-server-statistics' data id with the resolved data.
-            console.log(`Updating widhet with data id "current-server-statistics"`);
+            console.log(`Updating widget with data id "current-server-statistics"`);
             this.sendEvent('current-server-statistics', data);
         });
     }
