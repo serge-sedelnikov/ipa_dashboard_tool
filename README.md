@@ -58,6 +58,10 @@ There are two types of jobs:
 
 ![User interface hierarchy](https://bitbucket.org/storaensoipa/ipa.dashboard.tool/downloads/IpaDashboarding1.png)
 
+# Folder structure
+
+
+
 # Running locally
 
 To start application locally execute
