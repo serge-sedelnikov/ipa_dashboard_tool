@@ -23,10 +23,16 @@ console.log(`Starting server at port ${port}...`);
 var server = http.createServer(app);
 // host socket io
 var io = require('socket.io')(server);
+var middleware = require('socketio-wildcard')();
+io.use(middleware);
 console.log('Socket.io is running, waiting for jobs to be connected.');
 
 io.on('connection', function (socket) {
   console.log(`New socket client connected ${socket.client.id}`);
+  socket.on('*', (packet) => {
+    console.log(packet);
+    socket.broadcast.emit(packet.data[0], packet.data[1]);
+  });
 });
 
 /**
