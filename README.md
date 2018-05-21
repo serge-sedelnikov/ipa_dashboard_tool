@@ -19,6 +19,7 @@ The frameworks is based on the following concepts:
 - `Widget` - the representation of the data on the UI. Each widget is subscribed to certain `data_id` - a string with the identifier where each `Job` pushes the data to. Once `Job` pushed the data with `sendEvent(dataId, payload)` method, the widget receives the messages with same `dataId` and refreshes the own representation.
 
 Widgets can be of a different type:
+
 - Number
 - Text
 - Line chart
