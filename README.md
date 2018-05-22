@@ -105,6 +105,7 @@ It will build up react client, copy the build result into express `public` folde
 
 - `job.js` - base job class. Subscribes for socket.io and ready to send the signal on demand.
 - `schedule-job.js` - the job that executes on schedule.
+- `mqtt-job.js` - the jobs that is subscribed for MQTT broker topics and fires every time the desired MQTT message arrives.
 
 ## job.js
 
@@ -119,6 +120,12 @@ Method `initializeAsync()` is called before `run()` and needs to return a `Promi
 The `ScheduleJob` class is using `node-schedule` to execute jobs on desired time intervals using CRON string format (see below in schedule job sample.
 
 The `job-runner` calls `run()` method for this type of jobs, the `run()` method instantiates the scheduler and runs the method `onSchedule()` in desired schedule. The desired schedule is defined and returned in the method `getSchedule()` which should be implemented in child classes.
+
+## mqtt-job.js
+
+The `MqttMessageJob` executes every time the MQTT message is broadcasted to the topics it subscribed to. It uses `mqtt` module to connect to the MQTT broker and subscribe to the list of topics.
+
+On `run()` method call by `job-runner` it establish the MQTT connection and subscribed for topics. AWhen message arrives, the `onMessage(topic, message)` method is called.
 
 # Samples
 
@@ -155,6 +162,16 @@ Example: `* */5 * * * *` - execute the job every 5 minutes.
 - `onSchedule()` - this method is executed on schedule. Fetch the data here and then call `sendEvent(dataId, data)` to update widgets on schedule.
 
 > If the above methods are not implemented, the exception will be thrown.
+
+## Sample MQTT Message Job
+
+`jobs/sample-mqtt-job.js` contains a class that implements the base `MqttMessageJob` class (`src/base/mqtt-job.js`).
+
+The class must implement following methods:
+
+- `getMqttBrokerUri()` - needs to return a string with the MQTT broker address. Must include the protocol as well. For instance: `mqtt://mqtt.intelligentpackaging.online`;
+- `getListOfTopics()` - must return the array of topics the job needs to subscribe to. The array must be an array of strings. For instabce: `['topic1', 'topic2/#', 'topic3/eventType1/value']`;
+- `onMessage(topic, message)` - is executed every time the MQTT message arrives. `topic` is a string with the topic that fired the event. `message` is a `Buffer` that contains arrived message payload.
 
 ## Job life cycle:
 
