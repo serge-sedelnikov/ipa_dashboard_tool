@@ -22,3 +22,5 @@ class ScheduleJob extends Job {
         throw 'Method onSchedule() need to be implemented. This method executes on given schedule.'
     }
 }
+
+module.exports.ScheduleJob = ScheduleJob;
