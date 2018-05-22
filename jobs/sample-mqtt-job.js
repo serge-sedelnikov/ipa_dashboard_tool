@@ -8,7 +8,7 @@ class SampleMqttEventJob extends MqttMessageJob {
     /** Gets the MQTT broker address */
     getMqttBrokerUri(){
         // return broker address string.
-        return 'mqtt.intelligentpackaging.online';
+        return 'mqtt://mqtt.intelligentpackaging.online';
     }
     
     /** Returns the array of topics to subscribe to. */

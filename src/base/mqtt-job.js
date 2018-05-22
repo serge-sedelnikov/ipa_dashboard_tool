@@ -30,10 +30,10 @@ class MqttMessageJob extends Job {
         // subscribe for topics
         const client = mqtt.connect(brokerAddress);
 
-        client.on('connect', function () {
+        client.on('connect', () => {
             console.log(`Job ${this.id} is connected to MQTT ${brokerAddress}. Waiting for messages...`);
             // on connected, subscribe for topics
-            let topics = getListOfTopics();
+            let topics = this.getListOfTopics();
             topics.forEach(topic => {
                 client.subscribe(topic);
             });
