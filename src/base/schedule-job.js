@@ -14,7 +14,7 @@ class ScheduleJob extends Job {
     run(){
         // get cron schedule
         const cron = this.getSchedule();
-        schedule.scheduleJob(cron, this.onSchedule);
+        schedule.scheduleJob(cron, this.onSchedule.bind(this));
     }
 
     /** Executes on schedule. */

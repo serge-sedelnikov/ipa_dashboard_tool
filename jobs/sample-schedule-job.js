@@ -9,7 +9,7 @@ class SampleScheduleJob extends ScheduleJob {
     getSchedule(){
         // return CRON schedule format
         // this sample job runs every 15 seconds
-        return '*/15 * * * *';
+        return '*/15 * * * * *';
     }
 
     /**
@@ -22,3 +22,5 @@ class SampleScheduleJob extends ScheduleJob {
         this.sendEvent('schedule-matched', new Date());
     }
 }
+
+module.exports = SampleScheduleJob;
