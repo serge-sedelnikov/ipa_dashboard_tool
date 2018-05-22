@@ -1,3 +1,5 @@
+const schedule = require('node-schedule');
+
 const { Job } = require('./job');
 
 /** Runs job on schedule. */
@@ -10,7 +12,9 @@ class ScheduleJob extends Job {
 
     /** Activates the scheduler using CRON string from getSchedule() method. */
     run(){
-
+        // get cron schedule
+        const cron = this.getSchedule();
+        schedule.scheduleJob(cron, this.onSchedule);
     }
 
     /** Executes on schedule. */
