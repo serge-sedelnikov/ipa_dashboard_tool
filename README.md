@@ -95,6 +95,8 @@ It will build up react client, copy the build result into express `public` folde
 
 # Backend classes
 
+> Note that `run()` method for the job executes only once on server start.
+
 `/src`
 
 - `job-runner.js` - this class resolves all jobs available in `\jobs` folder and starts them. 
@@ -102,14 +104,57 @@ It will build up react client, copy the build result into express `public` folde
 `/src/base`
 
 - `job.js` - base job class. Subscribes for socket.io and ready to send the signal on demand.
+- `schedule-job.js` - the job that executes on schedule.
 
-# Sample
+## job.js
+
+The generic job that has `run()` method and is a base class for all other jobs. On server start the `job-runner` executes the `run()` method for all resolved jobs. The `run()` method is executed only once. 
+
+The exception is thrown if `run()` method is not implemented.
+
+Method `initializeAsync()` is called before `run()` and needs to return a `Promise`. The execution of the job is blocked before the returned promise is resolved.
+
+## schedule-job.js
+
+The `ScheduleJob` class is using `node-schedule` to execute jobs on desired time intervals using CRON string format (see below in schedule job sample.
+
+The `job-runner` calls `run()` method for this type of jobs, the `run()` method instantiates the scheduler and runs the method `onSchedule()` in desired schedule. The desired schedule is defined and returned in the method `getSchedule()` which should be implemented in child classes.
+
+# Samples
+
+## Basic job
 
 `jobs/sample-job.js` is created to demonstrate the generic job flow.
 
 Developer must overwrite `run()` method of the generic job when it is extended from `Job` class. This method can do anything to fetch the data and when data is ready, it needs to call `this.sendEvent(dataId, payload)` method with necessary data ID and fetched data. This will be sent to widgets.
 
 It is also possible to override method `initializeAsync()` that must return `Promise`. In this method developer can define initialization activities, the `run()` method will never be run before the `initializeAsync()` is finished.  
+
+## Schedule job
+
+`jobs/sample-schedule-job.js` is created to demonstrate the schedule job flow.
+
+This class needs to be derived from `ScheduleJob` class in `src/base/schedule-job.js` module. The methods that are must be implemented are:
+
+- `getSchedule()` - returns a CRON format string for desired schedule.
+
+```
+*    *    *    *    *    *
+┬    ┬    ┬    ┬    ┬    ┬
+│    │    │    │    │    │
+│    │    │    │    │    └ day of week (0 - 7) (0 or 7 is Sun)
+│    │    │    │    └───── month (1 - 12)
+│    │    │    └────────── day of month (1 - 31)
+│    │    └─────────────── hour (0 - 23)
+│    └──────────────────── minute (0 - 59)
+└───────────────────────── second (0 - 59, OPTIONAL)
+```
+
+Example: `* */5 * * * *` - execute the job every 5 minutes.
+
+- `onSchedule()` - this method is executed on schedule. Fetch the data here and then call `sendEvent(dataId, data)` to update widgets on schedule.
+
+> If the above methods are not implemented, the exception will be thrown.
 
 ## Job life cycle:
 
