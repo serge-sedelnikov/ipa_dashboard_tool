@@ -5,25 +5,44 @@ const { Job } = require('./job');
 class MqttMessageJob extends Job {
 
     /** Gets the address of the MQTT broker to connect to. */
-    getMqttBrokerUri(){
-        throw 'The method needs to return MQTT broker URI, for instance: mqtt.mosquitto.com';
+    getMqttBrokerUri() {
+        throw 'The method needs to return MQTT broker URI, for instance: mqtt://test.mosquitto.org';
     }
 
     /** Gets the array of topics to subscribe to. */
-    getListOfTopics(){
+    getListOfTopics() {
         throw 'The method needs to return the array of strings: topics to subscribe to. For instance: ["topic1/#", "topic2", "topic3/event1/value3"]';
     }
 
-    /** Connects to MQTT */
-    initializeAsync(){
-        return Promise((res, rej)=> {
-
-        });
+    /**
+     * Executes on MQTT message arrived
+     * @param {*} topic Received topic
+     * @param {*} message Message buffer
+     */
+    onMessage(topic, message){
+        throw 'Method onMessage(topic, message) need to be implemented. The method fires on MQTT message received.'
     }
 
     /** Connects to given MQTT broker, subscribes for topics and waits for messages. */
-    run(){
+    run() {
+        // get MQTT broker 
+        const brokerAddress = this.getMqttBrokerUri();
         // subscribe for topics
+        const client = mqtt.connect(brokerAddress);
+
+        client.on('connect', function () {
+            // on connected, subscribe for topics
+            let topics = getListOfTopics();
+            topics.forEach(topic => {
+                client.subscribe(topic);
+            });
+        });
+
+        client.on('message', this.onMessage.bind(this));
+
+        client.on('error', (err) => {
+            throw err;
+        })
     }
 }
 
