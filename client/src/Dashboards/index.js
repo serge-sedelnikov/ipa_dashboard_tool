@@ -1,2 +1,2 @@
-export { default as Dashboard_1 } from "./Dashboard_1/Dashboard_1";
-export { default as Dashboard_2 } from "./Dashboard_2/Dashboard_2";
+export { default as Dashboard1 } from "./dashboard-1/dashboard-1";
+export { default as Dashboard2 } from "./dashboard-2/dashboard-2";

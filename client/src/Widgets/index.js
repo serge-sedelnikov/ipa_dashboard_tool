@@ -1,1 +1,1 @@
-export { default as TextWidget } from "./TextWidget/TextWidget";
+export { default as TextWidget } from "./text-widget/text-widget";
