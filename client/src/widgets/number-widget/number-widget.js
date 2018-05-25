@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardText, CardTitle, CardSubtitle } from 'reactstrap';
+import { Card, CardText, CardTitle } from 'reactstrap';
 import Widget from '../base-widget';
 import './number-widget.css';
 

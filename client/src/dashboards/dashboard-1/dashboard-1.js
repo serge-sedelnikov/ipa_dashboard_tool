@@ -1,7 +1,7 @@
 import React from 'react';
 import Dashboard from '../base-dashboard';
 import { Responsive, WidthProvider } from 'react-grid-layout';
-import {TextWidget, NumberWidget} from '../../widgets';
+import {TextWidget, NumberWidget, ListWidget} from '../../widgets';
 import './dashboard-1.css';
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -13,7 +13,7 @@ export default class Dashboard1 extends Dashboard {
     const layout = [
         {i: 'a', x: 0, y: 0, w: 6, h: 4},
         {i: 'b', x: 6, y: 0, w: 6, h: 4},
-        {i: 'c', x: 0, y: 6, w: 12, h: 4}
+        {i: 'c', x: 0, y: 6, w: 12, h: 7}
       ];
     var layouts = {
         lg: layout,
@@ -24,7 +24,7 @@ export default class Dashboard1 extends Dashboard {
         cols={{lg: 12, md: 12, sm: 6, xs: 1, xxs: 1}}>
         <div key="a"><TextWidget dataId="schedule-matched" header="Text widget" footer="Footer content"></TextWidget></div>
         <div key="b"><NumberWidget dataId="random-number" header="Number widget" footer="Footer content" prefix="Uptime" suffix="s"></NumberWidget></div>
-        <div key="c"><TextWidget dataId="schedule-matched" header="Text widget" footer="Footer content"></TextWidget></div>
+        <div key="c"><ListWidget dataId="list-of-items" header="Text widget" footer="Footer content"></ListWidget></div>
       </ResponsiveGridLayout>
     )
   }

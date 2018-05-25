@@ -3,7 +3,7 @@ let count = 0;
 /**
  * Sample job that runs on schedule
  */
-class SampleJobNumber extends ScheduleJob {
+class SampleNumberJob extends ScheduleJob {
 
     /** The method returns the desired schedule. */
     getSchedule(){
@@ -24,4 +24,4 @@ class SampleJobNumber extends ScheduleJob {
     }
 }
 
-module.exports = SampleJobNumber;
+module.exports = SampleNumberJob;
