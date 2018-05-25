@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import * as Dashboards from './dashboards';
-import Tabs from './components/tabs/tabs';
+import Tabs from './components/tabs/Tabs';
 import './App.css';
 
 class App extends Component {
