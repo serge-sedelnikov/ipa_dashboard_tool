@@ -7,7 +7,7 @@ class Widget extends Component {
     this.endpoint = 'http://localhost:5000';
     this.socket = null;
     this.state = {
-      response: false,
+      response: 'waiting for data...',
     };
   }
 
