@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import * as Dashboards from './dashboards';
+import Tabs from './components/tabs/Tabs';
 import './App.css';
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    let dashboards = Object.keys(Dashboards);
+      return (
+        <Router>
+          <div>
+            <Tabs data={dashboards}></Tabs>
+            <Route path="/" exact render={() => {
+              return <Redirect to={Dashboards[dashboards[0]].__name} />
+            }} />    
+            {dashboards.map((d, i) => {
+              let DashboardComponent = Dashboards[d];
+              return (
+                <Route key={i} exact path={`/${DashboardComponent.__name}`} component={DashboardComponent}/>
+              )
+            })}
+          </div>
+        </Router>
+      );
+    }
 }
 
 export default App;
