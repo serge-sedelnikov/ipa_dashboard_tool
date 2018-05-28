@@ -13,7 +13,9 @@ export default class Dashboard1 extends Dashboard {
     const layout = [
         {i: 'a', x: 0, y: 0, w: 6, h: 4},
         {i: 'b', x: 6, y: 0, w: 6, h: 4},
-        {i: 'c', x: 0, y: 6, w: 12, h: 7}
+        {i: 'c', x: 0, y: 6, w: 12, h: 7},
+        {i: 'd', x: 0, y: 6, w: 6, h: 7},
+        {i: '3', x: 6, y: 6, w: 6, h: 7}
       ];
     var layouts = {
         lg: layout,
@@ -25,6 +27,8 @@ export default class Dashboard1 extends Dashboard {
         <div key="a"><NumberWidget dataId="random-number" value="avg" header="Average poop weight" footer="Yaaay"></NumberWidget></div>
         <div key="b"><NumberWidget dataId="random-number" value="count" header="Total poopers count" footer="Foooo" suffix="%"></NumberWidget></div>
         <div key="c"><NumberWidget dataId="schedule-matched" header="Ticks"></NumberWidget></div>
+        <div key="d"><NumberWidget dataId="topic1" header="MQTT Number 1"></NumberWidget></div>
+        <div key="3"><NumberWidget dataId="topic2" header="MQTT Number 2"></NumberWidget></div>
       </ResponsiveGridLayout>
     )
   }
