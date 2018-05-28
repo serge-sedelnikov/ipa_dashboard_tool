@@ -16,7 +16,8 @@ class Widget extends Component {
   }
 
   componentDidMount() {
-    let {dataId} = this.props;
+    console.log(this.props);
+    let { dataId } = this.props;
     this.socket = socketIOClient(this.endpoint);
     this.socket.on(dataId, data => this.setDataToState(data));
   }

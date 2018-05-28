@@ -1,5 +1,6 @@
 const { ScheduleJob } = require('../src/base/schedule-job');
 let count = 0;
+let avg = 0;
 /**
  * Sample job that runs on schedule
  */
@@ -20,7 +21,11 @@ class SampleNumberJob extends ScheduleJob {
         console.log(`Schedule job with ID ${this.id} was activated at ${new Date()}`);
         // sending event to update widgets
         count++;
-        this.sendEvent('random-number', count);
+        avg = Math.floor(Math.random() * 1000 + 1000);
+        this.sendEvent('random-number', {
+            count,
+            avg
+        });
     }
 }
 
