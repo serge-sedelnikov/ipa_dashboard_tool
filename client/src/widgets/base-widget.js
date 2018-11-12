@@ -22,6 +22,8 @@ class Widget extends Component {
     this.socket = socketIOClient(this.endpoint);
     // subscribe for it
     this.socket.on(dataId, data => this.setDataToState(data));
+    // on widget mount, ask for latest cached data ID based on data ID
+    this.socket.emit('/get_cache', dataId);
   }
 
   componentWillUnmount(){
