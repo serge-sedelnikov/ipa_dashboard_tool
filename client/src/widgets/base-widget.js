@@ -4,7 +4,7 @@ import socketIOClient from "socket.io-client";
 class Widget extends Component {
   constructor() {
     super();
-    this.endpoint = 'http://localhost:5000';
+    this.endpoint = process.env.REACT_APP_SOCKETIO_URI || 'http://localhost:5000';
     this.socket = null;
     this.state = {
       response: false,
@@ -17,8 +17,10 @@ class Widget extends Component {
 
   componentDidMount() {
     console.log(this.props);
+    // extract data ID from the props
     let { dataId } = this.props;
     this.socket = socketIOClient(this.endpoint);
+    // subscribe for it
     this.socket.on(dataId, data => this.setDataToState(data));
   }
 
