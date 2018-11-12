@@ -1,3 +1,9 @@
+@import "node_modules/@storaensods/se-design-system/dist/_tokens.scss";
+
+body {
+  background-color: $se-color-bg-gray;
+}
+
 .App {
   text-align: center;
 }

@@ -1,35 +1,39 @@
 import React from 'react';
+import { Row, Col } from 'reactstrap';
+
 import Dashboard from '../base-dashboard';
-import { Responsive, WidthProvider } from 'react-grid-layout';
-import {TextWidget, NumberWidget, ListWidget} from '../../widgets';
+import { NumberWidget } from '../../widgets';
 import './dashboard-1.css';
-const ResponsiveGridLayout = WidthProvider(Responsive);
 
 export default class Dashboard1 extends Dashboard {
-  static getName(){
-    return 'Dashboard 1';
-}
+
+  /** The dashboard name to display */
+  static getName() {
+    return 'Classic Dashboard';
+  }
+
+  /** Render widgets */
   render() {
-    const layout = [
-        {i: 'a', x: 0, y: 0, w: 6, h: 4},
-        {i: 'b', x: 6, y: 0, w: 6, h: 4},
-        {i: 'c', x: 0, y: 6, w: 12, h: 7},
-        {i: 'd', x: 0, y: 6, w: 6, h: 7},
-        {i: '3', x: 6, y: 6, w: 6, h: 7}
-      ];
-    var layouts = {
-        lg: layout,
-    }
     return (
-      <ResponsiveGridLayout rowHeight={30} className="dashboard-2" layouts={layouts}
-        breakpoints={{lg: 1400, md: 996, sm: 768, xs: 480, xxs: 0}}
-        cols={{lg: 12, md: 12, sm: 6, xs: 1, xxs: 1}}>
-        <div key="a"><NumberWidget dataId="random-number" value="avg" header="Average weight" footer="Yaaay"></NumberWidget></div>
-        <div key="b"><NumberWidget dataId="random-number" value="count" header="Total count" footer="Foooo" suffix="%"></NumberWidget></div>
-        <div key="c"><NumberWidget dataId="schedule-matched" header="Ticks"></NumberWidget></div>
-        <div key="d"><NumberWidget dataId="topic1" header="MQTT Number 1"></NumberWidget></div>
-        <div key="3"><NumberWidget dataId="topic2" header="MQTT Number 2"></NumberWidget></div>
-      </ResponsiveGridLayout>
+      <div className="container-fluid mt-2">
+        <Row>
+          <Col lg="2" md="4" xs="12">
+            <NumberWidget dataId="random-number" value="avg" header="Average weight" footer="of the person" />
+          </Col>
+          <Col lg="2" md="4" xs="12">
+            <NumberWidget dataId="random-number" value="count" header="Total count" footer="of visitors" suffix="%" />
+          </Col>
+          <Col lg="2" md="4" xs="12">
+            <NumberWidget dataId="schedule-matched" header="Ticks" />
+          </Col>
+          <Col lg="2" md="4" xs="12">
+            <NumberWidget dataId="topic1" header="MQTT Number 1"></NumberWidget>
+          </Col>
+          <Col lg="2" md="4" xs="12">
+            <NumberWidget dataId="topic2" header="MQTT Number 2"></NumberWidget>
+          </Col>
+        </Row>
+      </div>
     )
   }
 }
