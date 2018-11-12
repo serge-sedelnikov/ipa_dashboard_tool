@@ -19,7 +19,7 @@ class SampleScheduleJob extends ScheduleJob {
         // this method fires every time the schedule is matched and activated
         console.log(`Schedule job with ID ${this.id} was activated at ${new Date()}`);
         // sending event to update widgets
-        this.sendEvent('schedule-matched', Date.now());
+        this.sendEvent('schedule-matched', new Date());
     }
 }
 

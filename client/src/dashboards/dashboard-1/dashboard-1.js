@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col } from 'reactstrap';
 
 import Dashboard from '../base-dashboard';
-import { NumberWidget } from '../../widgets';
+import { NumberWidget, TextWidget } from '../../widgets';
 import './dashboard-1.css';
 
 export default class Dashboard1 extends Dashboard {
@@ -23,8 +23,8 @@ export default class Dashboard1 extends Dashboard {
           <Col lg="2" md="4" xs="12">
             <NumberWidget dataId="random-number" value="count" header="Total count" footer="of visitors" suffix="%" />
           </Col>
-          <Col lg="2" md="4" xs="12">
-            <NumberWidget dataId="schedule-matched" header="Ticks" />
+          <Col lg="3" md="4" xs="12">
+            <TextWidget dataId="schedule-matched" header="Ticks" footer="Last time refreshed" />
           </Col>
           <Col lg="2" md="4" xs="12">
             <NumberWidget dataId="topic1" header="MQTT Number 1"></NumberWidget>
