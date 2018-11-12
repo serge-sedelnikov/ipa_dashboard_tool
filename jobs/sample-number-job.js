@@ -10,7 +10,7 @@ class SampleNumberJob extends ScheduleJob {
     getSchedule(){
         // return CRON schedule format
         // this sample job runs every second
-        return '* * * * * *';
+        return '*/20 * * * * *';
     }
 
     /**
