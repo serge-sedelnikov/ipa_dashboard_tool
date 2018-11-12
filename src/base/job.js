@@ -1,5 +1,6 @@
 const io = require('socket.io-client')(`http://localhost:${global.port || 5000}`)
 const uidGenerator = require('node-unique-id-generator');
+const storage = require('node-persist');
 
 /**
  * Base job class. Connects to the socket io and ready to broadcast event on demand.
@@ -38,6 +39,8 @@ class Job{
         }
         // emit the event
         io.emit(dataId, payload);
+        // save latest value to cache
+        storage.setItem(dataId, payload); // this call is async but we don't want to lock the thread, it will be eventually finished.
     }
 
     /** Runs the job. */
