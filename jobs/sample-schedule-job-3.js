@@ -16,7 +16,10 @@ class SampleListJob extends ScheduleJob {
         let arr = [];
         for(let i = 0; i < 5; i++){
             let o = 'Item number: ' + Math.floor((Math.random() * 10) + 1);
-            arr.push(o);
+            arr.push({
+                text: o,
+                icon: 'http://pluspng.com/img-png/github-octocat-logo-png-octocat-icon-png-50-px-1600.png'
+            });
         }
         return arr;
     }
