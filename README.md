@@ -29,7 +29,7 @@ Widgets can be of a different type:
 - *Generic HTML Widget* - the widget that accepts data ID and calls `render()` method, developer needs to define render method.
 - etc.. (to be extended based on customer needs)
 
-![main blocks](https://bitbucket.org/storaensoipa/ipa.dashboard.tool/downloads/IpaDashboarding.png)
+![main blocks](https://res.cloudinary.com/stora-enso-oyj/image/upload/v1542021435/ipa_dashboard/IpaDashboarding.png)
 
 Jobs and Socket.IO server are running on Express Node.JS application. The same application is hosting React-based UI layer which is subscribed for Socket.IO Events
 
@@ -56,7 +56,7 @@ There are two types of jobs:
 
 > If mentioned methods are not overwritten, the exception is thrown on the application start.
 
-![User interface hierarchy](https://bitbucket.org/storaensoipa/ipa.dashboard.tool/downloads/IpaDashboarding1.png)
+![User interface hierarchy](https://res.cloudinary.com/stora-enso-oyj/image/upload/v1542021397/ipa_dashboard/IpaDashboarding1.png)
 
 # Folder structure
 
