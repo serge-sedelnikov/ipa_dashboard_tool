@@ -19,7 +19,7 @@ export default class Dashboard1 extends Dashboard {
         <Row className="mb-3">
           <Col>
             <TextWidget
-              text="Classic dashboard that shows all features." logo="https://res.cloudinary.com/stora-enso-oyj/image/upload/v1540473597/logo_cbm2xf.png" />
+              text="Classic dashboard that shows all features." logo="https://res.cloudinary.com/stora-enso-oyj/image/upload/v1526327990/stora-enso_batsdj.png" />
           </Col>
         </Row>
 
