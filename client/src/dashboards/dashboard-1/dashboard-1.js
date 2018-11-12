@@ -16,6 +16,13 @@ export default class Dashboard1 extends Dashboard {
   render() {
     return (
       <div className="container-fluid mt-2">
+        <Row className="mb-3">
+          <Col>
+            <TextWidget
+              text="Classic dashboard that shows all features." logo="https://res.cloudinary.com/stora-enso-oyj/image/upload/v1526327990/stora-enso_batsdj.png" />
+          </Col>
+        </Row>
+
         <Row>
           <Col lg="2" md="4" xs="12">
             <NumberWidget dataId="random-number" value="avg" header="Average weight" footer="of the person" />
@@ -23,7 +30,7 @@ export default class Dashboard1 extends Dashboard {
           <Col lg="2" md="4" xs="12">
             <NumberWidget dataId="random-number" value="count" header="Total count" footer="of visitors" suffix="%" />
           </Col>
-          <Col lg="3" md="4" xs="12">
+          <Col lg="4" md="4" xs="12">
             <TextWidget dataId="schedule-matched" header="Ticks" footer="Last time refreshed" />
           </Col>
           <Col lg="2" md="4" xs="12">
