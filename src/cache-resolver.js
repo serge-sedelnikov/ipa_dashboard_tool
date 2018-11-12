@@ -7,7 +7,7 @@ const storage = require('node-persist');
 class CacheResolver {
 
     /** Runs cache resolver */
-    run(){
+    run() {
         // subscribe for new cache request
         io.on('/get_cache', this.resolveCacheByDataId);
     }
@@ -16,8 +16,14 @@ class CacheResolver {
      * Resolves the cache by Data ID and if founds, emits the value back to widget.
      * @param {*} dataId Data ID to resolve the cache to.
      */
-    async resolveCacheByDataId(dataId){
+    async resolveCacheByDataId(dataId) {
         console.log(dataId);
+        // get data by id
+        const latestValue = await storage.getItem(dataId);
+        if (latestValue) {
+            // emit the event
+            io.emit(dataId, latestValue);
+        }
     }
 }
 
