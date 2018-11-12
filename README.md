@@ -67,11 +67,12 @@ There are two types of jobs:
 To start application locally execute
 
 ```
-npm install
-npm start
+npm setup
+npm run server
+npm run client
 ```
 
-`npm start` runs both backend and UI under different ports. Test UI application in `http://localhost:3000`. Then navigate to `http://localhost:5000`. If you have environment variable `PORT` defined, navigate to this port on `localhost` host.
+`npm run server` and `npm run client` runs both backend and UI under different ports. Test UI application in `http://localhost:3000`. Then navigate to `http://localhost:5000`. If you have environment variable `PORT` defined, navigate to this port on `localhost` host.
 
 # Build up for production
 
