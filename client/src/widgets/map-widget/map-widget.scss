@@ -1,0 +1,13 @@
+@import "../../styles/colors.scss";
+
+.number-widget{
+    color: $blue100;
+    .icon{
+        margin-right: 16px;
+        background: $blue100;
+        color: white;
+        padding: 16px;
+        font-size: 50%;
+        border-radius: 50%;
+    }
+}
