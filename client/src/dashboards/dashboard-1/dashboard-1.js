@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col } from 'reactstrap';
 
 import Dashboard from '../base-dashboard';
-import { NumberWidget, TextWidget } from '../../widgets';
+import { NumberWidget, TextWidget, ListWidget } from '../../widgets';
 import './dashboard-1.css';
 
 export default class Dashboard1 extends Dashboard {
@@ -19,11 +19,13 @@ export default class Dashboard1 extends Dashboard {
         <Row className="mb-3">
           <Col>
             <TextWidget
-              text="Classic dashboard that shows all features." logo="https://res.cloudinary.com/stora-enso-oyj/image/upload/v1526327990/stora-enso_batsdj.png" />
+              text="Classic dashboard that shows all features." logo="https://res.cloudinary.com/stora-enso-oyj/image/upload/v1540473597/logo_cbm2xf.png" />
           </Col>
         </Row>
 
+        
         <Row>
+          {/* Generic numbers */}
           <Col lg="2" md="4" xs="12">
             <NumberWidget dataId="random-number" value="avg" header="Average weight" footer="of the person" />
           </Col>
@@ -36,9 +38,13 @@ export default class Dashboard1 extends Dashboard {
           <Col lg="2" md="4" xs="12">
             <NumberWidget dataId="topic1" header="MQTT Number 1"></NumberWidget>
           </Col>
+          {/* /Generic numbers */}
+
+          {/* List */}
           <Col lg="2" md="4" xs="12">
-            <NumberWidget dataId="topic2" header="MQTT Number 2"></NumberWidget>
+            <ListWidget dataId="list-of-items" header="MQTT Number 1" />
           </Col>
+          {/* / List */}
         </Row>
       </div>
     )
