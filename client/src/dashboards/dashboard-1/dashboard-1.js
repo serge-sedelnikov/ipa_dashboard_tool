@@ -24,8 +24,8 @@ export default class Dashboard1 extends Dashboard {
       <ResponsiveGridLayout rowHeight={30} className="dashboard-2" layouts={layouts}
         breakpoints={{lg: 1400, md: 996, sm: 768, xs: 480, xxs: 0}}
         cols={{lg: 12, md: 12, sm: 6, xs: 1, xxs: 1}}>
-        <div key="a"><NumberWidget dataId="random-number" value="avg" header="Average poop weight" footer="Yaaay"></NumberWidget></div>
-        <div key="b"><NumberWidget dataId="random-number" value="count" header="Total poopers count" footer="Foooo" suffix="%"></NumberWidget></div>
+        <div key="a"><NumberWidget dataId="random-number" value="avg" header="Average weight" footer="Yaaay"></NumberWidget></div>
+        <div key="b"><NumberWidget dataId="random-number" value="count" header="Total count" footer="Foooo" suffix="%"></NumberWidget></div>
         <div key="c"><NumberWidget dataId="schedule-matched" header="Ticks"></NumberWidget></div>
         <div key="d"><NumberWidget dataId="topic1" header="MQTT Number 1"></NumberWidget></div>
         <div key="3"><NumberWidget dataId="topic2" header="MQTT Number 2"></NumberWidget></div>

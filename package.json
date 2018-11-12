@@ -9,7 +9,8 @@
     "server": "node ./bin/www",
     "server:debug": "node ./bin/www --debug",
     "build": "cd client && npm run build && cd .. && npm run copy-client",
-    "start:production": "npm run build && npm run server"
+    "start:production": "npm run build && npm run server",
+    "setup": "npm install && cd client && npm install"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
