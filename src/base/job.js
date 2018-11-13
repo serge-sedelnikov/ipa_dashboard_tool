@@ -18,7 +18,7 @@ class Job{
         this.id = uidGenerator.generateUniqueId('job-');
 
         // subscribe for the job parameters change event
-        io.on('/parameterChanged', this.private__parameterChanged);
+        io.on('/parameterChanged', this.private__parameterChanged.bind(this));
 
         // wait for user initialization promise
         let initPromise = this.initializeAsync();
