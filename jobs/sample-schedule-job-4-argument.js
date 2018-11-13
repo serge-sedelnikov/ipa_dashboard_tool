@@ -28,6 +28,8 @@ class SampleScheduleJob extends ScheduleJob {
      */
     userNameChanged(newValue){
         this.userName = newValue;
+        // optionally send event right away
+        this.sendEvent('parameterized-data', this.userName || '<not set>');
     }
 }
 

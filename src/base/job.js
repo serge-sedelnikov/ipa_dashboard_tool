@@ -37,7 +37,7 @@ class Job{
         const exec = this[paramChangedMethod];
         if(exec && Object.isExtensible(exec)){
             // if possible to execute, do this with new value as argument
-            exec(newValue);
+            exec.bind(this)(newValue);
         }
     }
 
