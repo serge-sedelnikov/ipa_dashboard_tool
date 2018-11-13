@@ -1,6 +1,6 @@
 {
   "name": "ipa.dashboard.tool",
-  "version": "1.0.0",
+  "version": "0.30.0",
   "private": true,
   "scripts": {
     "copy-client": "cd client/build && cpy **/*.* ../../public --parents",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
+    "debug": "2.6.9",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",

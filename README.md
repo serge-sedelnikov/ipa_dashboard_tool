@@ -60,8 +60,6 @@ There are two types of jobs:
 
 # Folder structure
 
-
-
 # Running locally
 
 To start application locally execute

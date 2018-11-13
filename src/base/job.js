@@ -16,8 +16,29 @@ class Job{
     private__InitializeAsync(){
         // generate job unique ID with 'job' prefix
         this.id = uidGenerator.generateUniqueId('job-');
+
+        // subscribe for the job parameters change event
+        io.on('/parameterChanged', this.private__parameterChanged.bind(this));
+
+        // wait for user initialization promise
         let initPromise = this.initializeAsync();
         return initPromise.then(() => this);
+    }
+
+    /**
+     * Executes on widget sends new parameter values.
+     * @param {*} paramName Name of the parameter.
+     * @param {*} newValue New value of the parameter.
+     */
+    private__parameterChanged(data){
+        const { paramName, newValue } = data;
+        // compose the method of the param changed method
+        const paramChangedMethod = `${paramName}Changed`;
+        const exec = this[paramChangedMethod];
+        if(exec && Object.isExtensible(exec)){
+            // if possible to execute, do this with new value as argument
+            exec.bind(this)(newValue);
+        }
     }
 
     /** Executes when module need to be initialized. If returns promise, the thread waits for the initialization */

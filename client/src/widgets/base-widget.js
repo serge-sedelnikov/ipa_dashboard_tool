@@ -29,6 +29,16 @@ class Widget extends Component {
   componentWillUnmount(){
     this.socket.disconnect();
   }
+
+  /**
+   * Sends the new parameter value back to backend for all jobs to fetch it and use in next data return loop.
+   * @param {*} paramName Name of the parameter. Should follow variable naming rules.
+   * @param {*} newValue New value of the perameter.
+   */
+  updateParameterValue(paramName, newValue){
+    this.socket.emit('/parameterChanged', { paramName, newValue } );
+  }
+
   render(){
       return(
           <div>This is the data {this.state.response}</div>

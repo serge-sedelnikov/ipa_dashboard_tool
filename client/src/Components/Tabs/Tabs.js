@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink as Link } from 'react-router-dom';
 import * as Dashboards from '../../dashboards';
+import { Nav, NavItem, NavLink } from 'reactstrap';
 import './tabs.css';
 
-export default class Tabs extends Component{
-    render(){
-        return(
-            <div className="nav__tabs">
+/**
+ * Tabs that are indicating available dashboards.
+ */
+export default class Tabs extends Component {
+    render() {
+        return (
+            <Nav tabs>
                 {this.props.data.map((d, i) => {
-                    return(
-                        <NavLink key={i} activeClassName="tab-active" to={`/${Dashboards[d].__name}`}>{Dashboards[d].__name}</NavLink>
+                    return (
+                        <NavItem key={i} >
+                            <Link className="nav-link" to={`/${Dashboards[d].__name}`}>{Dashboards[d].__name}</Link>
+                        </NavItem>
                     )
                 })}
-            </div>
+            </Nav>
         )
     }
 }
