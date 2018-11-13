@@ -36,7 +36,7 @@ class Widget extends Component {
    * @param {*} newValue New value of the perameter.
    */
   updateParameterValue(paramName, newValue){
-    this.socket.emit('/parameterChanged', paramName, newValue);
+    this.socket.emit('/parameterChanged', { paramName, newValue } );
   }
 
   render(){

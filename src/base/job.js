@@ -30,10 +30,11 @@ class Job{
      * @param {*} paramName Name of the parameter.
      * @param {*} newValue New value of the parameter.
      */
-    private__parameterChanged(paramName, newValue){
+    private__parameterChanged(data){
+        const { paramName, newValue } = data;
         // compose the method of the param changed method
-        const paramChamgedMethod = `${paramName}Changed`;
-        const exec = this[paramChamgedMethod];
+        const paramChangedMethod = `${paramName}Changed`;
+        const exec = this[paramChangedMethod];
         if(exec && Object.isExtensible(exec)){
             // if possible to execute, do this with new value as argument
             exec(newValue);
