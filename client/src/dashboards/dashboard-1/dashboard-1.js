@@ -90,7 +90,7 @@ export default class Dashboard1 extends Dashboard {
                 <TextWidget dataId="schedule-matched" header="Ticks" footer="Last time refreshed" />
               </Col>
               <Col lg="12" className="mt-1">
-                <TextWidget dataId="parameterized-data" header="I am reacting on parameter" footer="Edit it below, job will accept it and will refresh the value" />
+                <TextWidget dataId="parameterized-data" footer="I am reacting on parameter. Edit it below, job will accept it and will refresh the value" />
               </Col>
             </Row>
           </Col>
